@@ -1,0 +1,74 @@
+﻿@model List<Client>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Contacts Page";
+}
+<div class="container mt-4">
+    <div class="m-0 pt-3 pb-3 d-flex justify-content-between align-items-center text-center mx-auto" style="max-width: 800px;">
+        <h2 class="mb-0">Client List</h2>
+        <div class="d-flex flex-wrap gap-3 align-items-center text-center">
+            <a asp-controller="Contact" asp-action="AddContact" class="btn btn-primary">
+                Add new contact
+            </a>
+            <a asp-controller="Contact" asp-action="Upload" class="btn btn-primary">
+                Upload contact list
+            </a>
+        </div>
+    </div>
+
+    <form id="searchForm" class="form-inline mb-3" method="get">
+        <input id="searchBox" name="search" class="form-control mr-2" placeholder="Search by name" />
+        <button type="submit" class="btn btn-outline-primary">Search</button>
+    </form>
+    <div class="m-0 pt-3 pb-3 d-flex justify-content-between align-items-end text-center mx-auto" style="max-width: 800px;">
+        <a asp-controller="Contact" asp-action="ExportClientsToCsv" class="btn btn-primary">
+            Export contacts to a CSV file
+        </a>
+    </div>
+    <div id="clientsTable">
+        @await Html.PartialAsync("_ClientsTable", Model)
+    </div>
+</div>
+
+@section Scripts {
+    <!-- jQuery and jQuery UI -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css" />
+
+    <script>
+        $(function () {
+            $("#searchBox").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Contact/AutoComplete",
+                        data: { term: request.term },
+                        success: response
+                    });
+                },
+                minLength: 2,
+                delay: 200
+            });
+
+            $("#searchForm").on("submit", function (e) {
+                e.preventDefault();
+
+                var searchTerm = $("#searchBox").val();
+
+                $.ajax({
+                    url: "/Contact/ContactList",
+                    type: "GET",
+                    data: { search: searchTerm },
+                    success: function (result) {
+                        $("#clientsTable").html(result);
+                    },
+                    error: function () {
+                        alert("Failed to retrieve client list.");
+                    }
+                });
+            });
+        });
+    </script>
+}
+
+

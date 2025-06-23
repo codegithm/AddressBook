@@ -1,0 +1,74 @@
+﻿@using AddressBook.ViewModels;
+@model HomeViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Dashboard @Model.Name.ToString()</h1>
+    <div class="container d-flex justify-content-center flex-wrap">
+        <div style="max-width: 500px; width: 100%;">
+            <canvas id="dashboardChart"></canvas>
+        </div>
+        <div class="w-100 container d-flex align-content-start">
+            <a asp-controller="Contact" asp-action="ContactList" class="btn btn-primary p-2 mt-3">
+                Manage Contact List
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    const chartData = {
+        labels: ["Total Clients", "Data Exports", "Recent API Users", "New Imports", "User Login Count"],
+        datasets: [{
+            label: "System Stats",
+            data: [
+                @Model.ClientCount,
+                @Model.ExportCount,
+                @Model.RecentApiUsage,
+                @Model.NewImportedClients,
+                @Model.LoginRecord
+            ],
+            backgroundColor: [
+                "rgba(75,192,192,0.6)",
+                "rgba(255,159,64,0.6)",
+                "rgba(153,102,255,0.6)",
+                "rgba(255,99,132,0.6)"
+            ],
+            borderColor: [
+                "rgba(75,192,192,1)",
+                "rgba(255,159,64,1)",
+                "rgba(153,102,255,1)",
+                "rgba(255,99,132,1)"
+            ],
+            borderWidth: 1
+        }]
+    };
+
+    const config = {
+        type: 'bar',
+        data: chartData,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false },
+                title: {
+                    display: true,
+                    text: 'Dashboard Overview'
+                }
+            },
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    };
+
+    window.onload = () => {
+        new Chart(document.getElementById("dashboardChart"), config);
+    };
+</script>
+
+
+

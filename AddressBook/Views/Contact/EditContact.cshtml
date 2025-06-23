@@ -1,0 +1,48 @@
+﻿@using AddressBook.ViewModels
+@model ClientViewModel
+
+<div class="container mt-4">
+    <h2>Edit Client Record</h2>
+    <form asp-action="EditContact" method="post">
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" value="@Model.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="EmailAddress"></label>
+            <input asp-for="EmailAddress" value="@Model.EmailAddress" class="form-control" />
+            <span asp-validation-for="EmailAddress" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ContactNumber"></label>
+            <input asp-for="ContactNumber" value="@Model.ContactNumber" class="form-control" />
+            <span asp-validation-for="ContactNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Company"></label>
+            <input asp-for="Company" value="@Model.Company" class="form-control" />
+            <span asp-validation-for="Company" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ImportedAt"></label>
+            <input asp-for="ImportedAt" type="datetime-local"
+                   class="form-control"
+                   value="@Model.ImportedAt.ToString("yyyy-MM-ddTHH:mm")"
+                   readonly />
+            <span asp-validation-for="ImportedAt" class="text-danger"></span>
+        </div>
+        <input type="hidden"
+               class="form-control"
+               value="@Model.Id"
+               readonly />
+
+        <button type="submit" class="btn btn-success mt-3">Edit</button>
+        <a asp-action="Index" class="btn btn-secondary mt-3 ml-2">Cancel</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
