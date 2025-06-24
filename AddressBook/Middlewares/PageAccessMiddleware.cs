@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 
 namespace AddressBook.Middlewares
 {
@@ -17,6 +18,9 @@ namespace AddressBook.Middlewares
             var isProtectedPage = path != null &&
                                   !path.StartsWith("/api") &&
                                   !path.StartsWith("/auth/login") &&
+                                  !path.StartsWith("/auth/register") &&
+                                  !path.StartsWith("/auth/verifyemail") && 
+                                  !path.StartsWith("/auth/changepassword") &&
                                   !path.Contains(".");
 
             if (isProtectedPage && !context.User.Identity.IsAuthenticated)

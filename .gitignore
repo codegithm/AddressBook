@@ -1,0 +1,75 @@
+## Build results
+bin/
+obj/
+
+## User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Visual Studio settings
+.vs/
+.vscode/
+
+## ASP.NET Temporary files
+**/App_Data/
+**/App_Start/TempGeneratedFiles/
+*.tmp
+*.bak
+
+## IIS/hosting
+*.dbmdl
+*.log
+*.vspscc
+*.vssscc
+*.pdb
+
+## Rider IDE
+.idea/
+
+## Logs & diagnostics
+*.log
+*.tlog
+*.svclog
+
+## Build outputs
+*.dll
+*.exe
+
+## NuGet
+*.nupkg
+packages/
+*.snupkg
+project.lock.json
+project.fragment.lock.json
+
+## DotCover
+*.dotCover
+
+## Test Results
+TestResults/
+*.coverage
+*.coveragexml
+
+## Entity Framework
+*.db
+*.sqlite
+*.mdf
+*.ldf
+
+## publish profiles
+Properties/PublishProfiles/
+
+## Others
+_ReSharper*/
+*.resharper
+*.sln.docstates
+*.orig
+*.rej
+
+# Ignore local secrets if used
+secrets.json
+
+# Ignore global.json lock
+global.json.lock

@@ -273,3 +273,4 @@ C:\Users\xakaz\source\repos\AddressBook\AddressBookApi\bin\Debug\net8.0\runtimes
 C:\Users\xakaz\source\repos\AddressBook\AddressBookApi\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 C:\Users\xakaz\source\repos\AddressBook\AddressBookApi\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\xakaz\source\repos\AddressBook\AddressBookApi\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+C:\Users\xakaz\source\repos\AddressBook\AddressBookApi\obj\Debug\net8.0\AddressBookApi.sourcelink.json
